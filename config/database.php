@@ -3,7 +3,7 @@
 
 $host = 'gateway.tidbcloud.com';
 $port = 4000;
-$dbname = 'smartclinic_db';
+$dbname = 'Smartclinic-db';
 $username = 'root';
 $password = 'ads1HMgvawtM0gz0';  // ← Replace with your actual password
 
