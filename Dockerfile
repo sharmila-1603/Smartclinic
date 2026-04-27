@@ -1,7 +1,15 @@
-FROM php:8.1-apache
+FROM php:8.2-apache
 
+# Install MySQL extensions (this fixes the "could not find driver" error)
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Enable Apache rewrite module
+RUN a2enmod rewrite
+
+# Copy project files
 COPY . /var/www/html/
 
-RUN docker-php-ext-install mysqli
-
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html
+
+EXPOSE 80
