@@ -1,13 +1,17 @@
 <?php
-$host = 'localhost';
+// TiDB Cloud Database Configuration
+
+$host = 'gateway.tidbcloud.com';
+$port = 4000;
 $dbname = 'smartclinic_db';
 $username = 'root';
-$password = '';  // Default XAMPP password is empty
+$password = 'ads1HMgvawtM0gz0';  // ← Replace with your actual password
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // echo "Connected successfully"; // Remove this in production
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    echo "Database connected successfully!";  // Temporary - remove later
 } catch(PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
